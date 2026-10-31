@@ -156,7 +156,7 @@ jobs:
             --ks-pass "file:$HOME/wordcraft-signing/password.txt" --out "$B/signed.apk" "$B/aligned.apk"
           "$BT/apksigner" verify --verbose "$B/signed.apk"
           cp "$B/signed.apk" "dist/WordCraft-${TAG}-android-arm64-v8a.apk"
-          echo "APK=dist/WordCraft-${TAG}-android-arm64-v8a.apk" >> "$GITHUB_ENV"
+          echo "APK=src/dist/WordCraft-${TAG}-android-arm64-v8a.apk" >> "$GITHUB_ENV"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
