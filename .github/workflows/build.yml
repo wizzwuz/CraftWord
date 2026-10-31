@@ -164,13 +164,3 @@ jobs:
           name: WordCraft-Android-APK
           path: ${{ env.APK }}
           retention-days: 7
-
-      - name: Publish release (manual runs only)
-        if: github.event_name == 'workflow_dispatch'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: android-build-$(date +%s)
-        run: |
-          gh release create "$TAG" "${{ env.APK }}" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-            --title "WordCraft Android Build ($TAG)" \
-            --notes "Built from upstream $UPSTREAM at $GITHUB_SHA with the Android layer applied. Includes stylus (Gboard) support: ToolType::Stylus routed to the pointer path."
